@@ -1,0 +1,63 @@
+@startuml billeterie
+!define table(x) class x << (T,#FFAAAA) >>
+hide methods
+skinparam class {
+  BackgroundColor<<T>> #FDF2F2
+  ArrowColor black
+}
+
+table(Clients) {
+  +client_id : INT <<PK>>
+  --
+  full_name : VARCHAR(150)
+  email : VARCHAR(150)
+  phone : VARCHAR(20)
+  city : VARCHAR(100)
+  created_at : DATETIME
+}
+
+table(Events) {
+  +event_id : INT <<PK>>
+  --
+  title : VARCHAR(150)
+  description : TEXT
+  venue : VARCHAR(150)
+  city : VARCHAR(100)
+  start_date : DATETIME
+  end_date : DATETIME
+  capacity : INT
+  base_price : DECIMAL(8,2)
+  poster_url : VARCHAR(300)
+  created_at : DATETIME
+}
+
+table(Billets) {
+  +billet_id : INT <<PK>>
+  --
+  event_id : INT <<FK>>
+  client_id : INT <<FK>> 
+  purchase_date : DATETIME
+  price_paid : DECIMAL(8,2)
+  seat : VARCHAR(20)
+  status : ENUM('valid','cancelled','refunded')
+  qr_code : VARCHAR(300)
+}
+
+table(Categories) {
+  +category_id : INT <<PK>>
+  --
+  name : VARCHAR(80)
+  description : VARCHAR(255)
+}
+
+table(EventCategory) {
+  +event_id : INT <<PK,FK>>
+  +category_id : INT <<PK,FK>>
+}
+
+Clients "1" <-- "0..*" Billets : "achète"
+Events "1" <-- "0..*" Billets : "contient"
+Events "1" <-- "0..*" EventCategory : "appartient à"
+Categories "1" <-- "0..*" EventCategory : "définit"
+
+@enduml

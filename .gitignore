@@ -1,0 +1,6 @@
+# Fichiers temporaires / IDE
+*.bak
+*.tmp
+.DS_Store
+.vscode/
+.idea/

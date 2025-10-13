@@ -1,0 +1,46 @@
+@startuml billetrie_extended
+!define table(x) class x << (T,#A9D0F5) >>
+hide methods
+skinparam class {
+  BackgroundColor<<T>> #F3F9FF
+  ArrowColor black
+}
+
+table(Users) {
+  +user_id : INT <<PK>>
+  --
+  username : VARCHAR(100)
+  password_hash : VARCHAR(255)
+  email : VARCHAR(150)
+  role_id : INT <<FK>>
+  created_at : DATETIME
+}
+
+table(Roles) {
+  +role_id : INT <<PK>>
+  --
+  name : VARCHAR(50)
+}
+
+table(Payments) {
+  +payment_id : INT <<PK>>
+  --
+  billet_id : INT <<FK>>
+  amount : DECIMAL(8,2)
+  payment_date : DATETIME
+  method : ENUM('cb','paypal','virement')
+  status : ENUM('paid','pending','failed')
+}
+
+table(Logs) {
+  +log_id : INT <<PK>>
+  --
+  user_id : INT <<FK>>
+  action : VARCHAR(255)
+  log_date : DATETIME
+}
+
+Users "1" --> "1" Roles : "a un rôle"
+Payments "1" --> "1" Billets : "paye"
+Users "1" --> "0..*" Logs : "effectue"
+@enduml
