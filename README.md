@@ -22,4 +22,3 @@ git add .
 git commit -m "Initial - version de base + étendue"
 ```
 
-Ajoute le professeur `@DurandRemi` comme collaborateur sur GitHub pour la correction.
