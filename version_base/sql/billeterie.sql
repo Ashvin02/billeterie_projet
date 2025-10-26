@@ -6,7 +6,8 @@ USE billeterie;
 -- Table clients
 CREATE TABLE clients (
   client_id INT AUTO_INCREMENT PRIMARY KEY,
-  full_name VARCHAR(150) NOT NULL,
+  nom VARCHAR(100),
+  prenom VARCHAR(100),
   email VARCHAR(150) NOT NULL UNIQUE,
   phone VARCHAR(20),
   city VARCHAR(100),
