@@ -35,7 +35,6 @@ INSERT INTO clients (nom, prenom, email, phone) VALUES
 ('Girard', 'Lucas', 'lucas.girard@example.com', '0600000009'),
 ('Mercier', 'Léa', 'lea.mercier@example.com', '0600000010');
 
-
 -- 4) 20 billets simples (remplace la génération automatique)
 INSERT INTO billets (event_id, client_id, purchase_date, price_paid, seat, status, qr_code) VALUES
 (1, 1, '2025-09-01 10:00:00', 35.00, 'R01S01', 'valid', 'QR-0001'),
@@ -58,3 +57,10 @@ INSERT INTO billets (event_id, client_id, purchase_date, price_paid, seat, statu
 (3, 8, '2025-09-10 20:00:00', 15.00, 'R02S01', 'valid', 'QR-0018'),
 (4, 9, '2025-09-11 09:00:00', 120.00, 'R02S01', 'valid', 'QR-0019'),
 (5, 10, '2025-09-12 18:00:00', 10.00, 'R02S01', 'valid', 'QR-0020');
+
+-- 5) Utilisateurs pour la connexion
+INSERT INTO users (email, password, role) VALUES
+('admin@billeterie.com', 'admin123', 'admin'),
+('jean.dupont@billeterie.com', 'jdupont123', 'client');
+
+
