@@ -1,6 +1,5 @@
-# Fichiers temporaires / IDE
-*.bak
-*.tmp
-.DS_Store
-.vscode/
-.idea/
+﻿billeterie.jar
+out/
+manifest.txt
+tmp_driver/
+*.class

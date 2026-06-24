@@ -1,7 +1,7 @@
 package billeterie_app.controller;
 
+import billeterie_app.dao.Database;
 import billeterie_app.dao.UserDAO;
-import billeterie_models.models.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 public class LoginController {
 public LoginController() {
     UserDAO userDAO = new UserDAO();
+    debugPrintUsers();
     }  
     
     public boolean authenticateUser(String email, String password) {
